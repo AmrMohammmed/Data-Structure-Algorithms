@@ -1,0 +1,90 @@
+#include<iostream>
+using namespace std;
+const int QueueSize = 5;
+
+int arr[QueueSize];
+
+int front = -1;
+int rear = -1;
+int counter = 0;
+
+bool isEmpty()
+{
+	return counter == 0;
+}
+bool isFull()
+{
+	return counter == QueueSize;
+}
+void enqueue(int value)
+{ 
+	if(isFull())
+	{
+		cout << "Queue is FUll!" << endl;
+		return;
+	}
+	if(front ==-1)
+	{
+		front=0;
+	}
+
+	rear++;
+	arr[rear] = value;
+	counter++;
+}
+
+void dequeue()
+{
+	if(isEmpty())
+	{
+		cout << "Queue is Empty!" << endl;	
+		return;
+	}
+	front++;
+	counter--;
+
+}
+
+int getfront()
+{
+	if (isEmpty())
+	{
+		cout << "Queue is Empty!" << endl;
+		return -1;
+	}
+	return arr[front];
+}
+
+void displayQueue() 
+{
+	if (isEmpty())
+	{
+		cout << "Queue is Empty!" << endl;
+		return;
+	}
+	for(int i=front;i<=rear;i++)
+	{
+		cout << arr[i] << " ";
+		
+	}
+
+}
+
+int getSize()
+{
+	return counter;
+}
+int main()
+{
+	enqueue(1);
+	enqueue(2);
+	enqueue(3);
+
+
+	dequeue();
+	cout << getSize() << endl;
+	displayQueue();
+
+
+	return 0;
+}
